@@ -1,0 +1,30 @@
+1 Получить токен) curl -X POST "http://127.0.0.1:8001/token" -d "username=admin&password=secret" -H "Content-Type: application/x-www-form-urlencoded"
+
+2 Создать цель) curl -X POST http://127.0.0.1:8002/goals -H "Authorization: Bearer ???" -H "Content-Type: application/json" -d "{\"id\": 31, \"title\": \"New goal\", \"description\": \"Very cool goal\"}"
+
+3 Получить все цели) curl -X GET http://127.0.0.1:8002/goals -H "Authorization: Bearer ???"
+
+4 Получить цель по ID) curl -X GET http://127.0.0.1:8002/goals/1 -H "Authorization: Bearer ???"
+
+5 Обновить цель) curl -X PUT http://127.0.0.1:8002/goals/31 -H "Authorization: Bearer ???" -H "Content-Type: application/json" -d "{\"title\": \"Updated Goal\", \"description\": \"Even cooler goal\"}"
+
+6 Удалить цель) curl -X DELETE http://127.0.0.1:8002/goals/31 -H "Authorization: Bearer ???"
+
+7 Создать задачу для цели с привязкой к исполнителю) curl -X POST http://127.0.0.1:8002/goals/1/tasks -H "Authorization: Bearer ???" -H "Content-Type: application/json" -d "{\"id\": 31, \"title\": \"New task\", \"description\": \"Do something\", \"status\": \"todo\", \"assignee\": \"stephanie.olson80\"}"
+
+8 Получить все задачи у цели) curl -X GET http://127.0.0.1:8002/goals/1/tasks -H "Authorization: Bearer ???"
+
+9 Получить задачу по фильтру статуса или описания) curl -X GET "http://127.0.0.1:8002/goals/1/tasks?status=todo&description=something" -H "Authorization: Bearer ???"
+
+10 Получить задачу по ID) curl -X GET http://127.0.0.1:8002/tasks/31 -H "Authorization: Bearer ???"
+
+11 Обновить задачу) curl -X PUT http://127.0.0.1:8002/tasks/31 -H "Authorization: Bearer ???" -H "Content-Type: application/json" -d "{\"title\": \"Updated new task\", \"description\": \"new description\", \"status\": \"done\", \"assignee\": \"stephanie.olson80\"}"
+
+12 Удалить задачу) curl -X DELETE http://127.0.0.1:8002/tasks/31 -H "Authorization: Bearer ???"
+
+-----------------------------------------------------------------------------------------------------
+
+Примечания:
+
+1) Вместо ??? вставить JWT токен
+2) Фильтры статуса и описания задач опциональные (можно один из них удалить если нужно найти что-то одно)
